@@ -45,6 +45,26 @@ namespace CodeFirstProject.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Edit(int id)
+        {
+            var product = _dbProjectContext.Products.Find(id);
+            if (product != null)
+            {
+                return View(product);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost]
+        public IActionResult Edit(Product product)
+
+        {
+            _dbProjectContext.Update(product);
+            _dbProjectContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
 
