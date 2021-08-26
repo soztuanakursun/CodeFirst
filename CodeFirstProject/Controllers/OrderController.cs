@@ -32,10 +32,14 @@ namespace CodeFirstProject.Controllers
         [HttpPost]
         public IActionResult Create(Order order)
         {
+            if (ModelState.IsValid)
+            {
 
-            _dbProjectContext.Orders.Add(order);
-            _dbProjectContext.SaveChanges();
-            return RedirectToAction("Index");
+                _dbProjectContext.Orders.Add(order);
+                _dbProjectContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         public IActionResult Delete(int Id)
@@ -61,11 +65,16 @@ namespace CodeFirstProject.Controllers
         }
         [HttpPost]
         public IActionResult Edit(Order order)
-
         {
-            _dbProjectContext.Update(order);
-            _dbProjectContext.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+
+
+                _dbProjectContext.Update(order);
+                _dbProjectContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
     }
