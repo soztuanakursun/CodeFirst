@@ -4,14 +4,16 @@ using CodeFirstProject.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodeFirstProject.Migrations
 {
     [DbContext(typeof(DbProjectContext))]
-    partial class DbProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20210826084623_customer_email_create")]
+    partial class customer_email_create
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +29,7 @@ namespace CodeFirstProject.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -54,8 +54,8 @@ namespace CodeFirstProject.Migrations
 
                     b.Property<string>("Surname")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("Id");
 
@@ -101,8 +101,8 @@ namespace CodeFirstProject.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("SalePrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("SalePrice")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 

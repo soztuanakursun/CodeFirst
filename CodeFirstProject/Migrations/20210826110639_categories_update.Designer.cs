@@ -4,14 +4,16 @@ using CodeFirstProject.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodeFirstProject.Migrations
 {
     [DbContext(typeof(DbProjectContext))]
-    partial class DbProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20210826110639_categories_update")]
+    partial class categories_update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,8 +103,8 @@ namespace CodeFirstProject.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("SalePrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("SalePrice")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 

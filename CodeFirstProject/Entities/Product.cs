@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CodeFirstProject.Entities
 {
@@ -6,7 +7,12 @@ namespace CodeFirstProject.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public float SalePrice { get; set; }
+
+        [Display(Name = "SalePrice")]
+        [Required]
+        [Range(1.00, 1000000000,
+            ErrorMessage = "Price must be between 1.00 and 1000000000")]
+        public decimal SalePrice { get; set; }
 
         private int category;
 

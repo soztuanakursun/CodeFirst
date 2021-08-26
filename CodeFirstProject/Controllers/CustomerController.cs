@@ -28,10 +28,17 @@ namespace CodeFirstProject.Controllers
         [HttpPost]
         public IActionResult Create(Customer customer)
         {
-            _dbProjectContext.Customers.Add(customer);
-            _dbProjectContext.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _dbProjectContext.Customers.Add(customer);
+                _dbProjectContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
+
+
 
         public IActionResult Delete(int id)
         {
@@ -49,7 +56,7 @@ namespace CodeFirstProject.Controllers
             var customer = _dbProjectContext.Customers.Find(Id);
             // yukarıda Customer.Find dedik ve Id yi verdik o da bize eğer varsa Id si 2 olan biri onu alıp geldi.
 
-            if (customer != null) // null değil ise yani bir kayıt bulunduysa demek.
+            if (ModelState.IsValid)
             {
                 return View(customer);
             }
@@ -63,17 +70,19 @@ namespace CodeFirstProject.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-            // şimdi o ekrandan değişikliği yaptık ve buraya post edeceğiz, sonrasında
-            // burada update edip db ye kaydetmemiz gerekli.
-            _dbProjectContext.Update(customer);
-            _dbProjectContext.SaveChanges();
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                // şimdi o ekrandan değişikliği yaptık ve buraya post edeceğiz, sonrasında
+                // burada update edip db ye kaydetmemiz gerekli.
+                _dbProjectContext.Update(customer);
+                _dbProjectContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
             // tabi burada bir sürü validasyon falan yapılabilir, kurallar falan vardır ama bizde yok şu anda.
         }
-    }
+        
+    } 
 
 }
-
-
 

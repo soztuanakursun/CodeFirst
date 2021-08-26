@@ -31,9 +31,13 @@ namespace CodeFirstProject.Controllers
         [HttpPost]
         public IActionResult Create(Product product)
         {
-            _dbProjectContext.Products.Add(product);
-            _dbProjectContext.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _dbProjectContext.Products.Add(product);
+                _dbProjectContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
 
         }
 

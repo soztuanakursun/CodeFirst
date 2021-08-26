@@ -4,14 +4,16 @@ using CodeFirstProject.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodeFirstProject.Migrations
 {
     [DbContext(typeof(DbProjectContext))]
-    partial class DbProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20210826120022_product_saleprice_validation")]
+    partial class product_saleprice_validation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
