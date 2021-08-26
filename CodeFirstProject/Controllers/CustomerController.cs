@@ -37,9 +37,6 @@ namespace CodeFirstProject.Controllers
 
             return View();
         }
-
-
-
         public IActionResult Delete(int id)
         {
             var customer = _dbProjectContext.Customers.Find(id);

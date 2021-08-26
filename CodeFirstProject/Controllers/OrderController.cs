@@ -11,7 +11,7 @@ namespace CodeFirstProject.Controllers
     public class OrderController : Controller
     {
         private readonly DbProjectContext _dbProjectContext;
-        private Order OrderId;
+        
 
         public OrderController(DbProjectContext dbProjectContext)
         {
