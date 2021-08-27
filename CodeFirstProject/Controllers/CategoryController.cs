@@ -1,7 +1,6 @@
 ﻿using CodeFirstProject.Contexts;
 using CodeFirstProject.Entities;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Linq;
 
 namespace CodeFirstProject.Controllers
